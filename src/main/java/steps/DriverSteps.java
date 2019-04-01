@@ -18,7 +18,7 @@ import junit.framework.Assert;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
 
-public class MainSteps {
+public class DriverSteps {
 
     private WebDriver driver = GlobalDriver.driver;
 
