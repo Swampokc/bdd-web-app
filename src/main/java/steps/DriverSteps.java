@@ -20,7 +20,7 @@ import static org.junit.Assert.assertNull;
 
 public class MainSteps {
 
-    private WebDriver driver = null;
+    private WebDriver driver = GlobalDriver.driver;
 
     @Given("^value path to driver \"([^\"]*)\"$")
     public void valuePathToDriver(String arg0) throws Throwable {
