@@ -10,7 +10,7 @@ Feature: Wep-app Hotel Test
 
   Scenario Outline: Menu check
     Given menu item "<id>" and "<text>" and "<url>"
-    When find element by id
+    When find menu element by id
     And click menu item
     Then check text
     And check url
@@ -19,3 +19,9 @@ Feature: Wep-app Hotel Test
             |    id        |        text  |                url                   |
             | item_booking | Бронирование | http://127.0.0.1:8080/booking        |
             | item_contact | Контакты     | http://127.0.0.1:8080/booking#footer |
+
+    Scenario: Check booking forms on existence
+      Given input item "<id>" and "<text>"
+      When find booking element by id
+      Then insert text to input form
+      And check the text of the booking form

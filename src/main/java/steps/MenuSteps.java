@@ -25,8 +25,8 @@ public class MenuSteps {
         url = arg2;
     }
 
-    @When("^find element by id$")
-    public void findElementById() {
+    @When("^find menu element by id$")
+    public void findMenuElementById() {
         menuItem = driver.findElement(By.id(id));
     }
 
