@@ -1,10 +1,37 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8">
     <title>{{title}}</title>
+    <script type="text/javascript" src="/static/javascripts/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="/static/stylesheets/bootstrap.min.css"/>
+    <link rel="stylesheet" href="/static/stylesheets/main.css" />
+    <meta charset="UTF-8">
 </head>
 <body>
-    <h1 id = "hello">Hello, {{name}}</h1>
+<header id="header" class="header">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-2">
+                <img src="/static/img/logo.png" alt="Sheraton" class="logo">
+            </div>
+            <div class="col-lg-2 offset-8">
+                <nav>
+                    <ul class="d-flex justify-content-end">
+                        <li id="item_contact" class="menu__item">
+                            <a href="#footer">
+                                Контакты
+                            </a>
+                        </li>
+                        <li id="item_booking" class="menu__item">
+                            <a href="booking">
+                                Бронирование
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </div>
+</header>
 </body>
 </html>

@@ -53,6 +53,7 @@ public class DriverSteps {
 
     @And("^check title is \"([^\"]*)\"$")
     public void checkTitleIs(String arg0) {
+        GlobalDriver.setDriver(driver);
         assertEquals(arg0, driver.getTitle());
     }
 }

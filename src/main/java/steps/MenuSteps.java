@@ -10,15 +10,16 @@ import static org.junit.Assert.assertEquals;
 
 public class MenuSteps {
 
-    private WebDriver driver = GlobalDriver.driver;
+    private WebDriver driver;
 
     private String id;
     private String text;
     private String url;
     private WebElement menuItem;
 
-    @Given("^menu item <\"([^\"]*)\"> and <\"([^\"]*)\"> and <\"([^\"]*)\">$")
+    @Given("^menu item \"([^\"]*)\" and \"([^\"]*)\" and \"([^\"]*)\"$")
     public void menuItemAndAnd(String arg0, String arg1, String arg2) {
+        driver = GlobalDriver.getDriver();
         id = arg0;
         text = arg1;
         url = arg2;
@@ -36,11 +37,11 @@ public class MenuSteps {
 
     @Then("^check text$")
     public void checkText() {
-        assertEquals(text, menuItem.getText());
+        assertEquals(menuItem.getText(), text);
     }
 
     @And("^check url$")
     public void checkUrl() {
-        assertEquals(url, driver.getCurrentUrl());
+        assertEquals(driver.getCurrentUrl(), url);
     }
 }
