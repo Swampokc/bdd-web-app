@@ -20,8 +20,22 @@ Feature: Wep-app Hotel Test
             | item_booking | Бронирование | http://127.0.0.1:8080/booking        |
             | item_contact | Контакты     | http://127.0.0.1:8080/booking#footer |
 
-    Scenario: Check booking forms on existence
-      Given input item "<id>" and "<text>"
-      When find booking element by id
-      Then insert text to input form
-      And check the text of the booking form
+    Scenario: Check dateId element and set value
+      Given driver to date In
+      When insert text to dateIn input
+      Then check the text of the DateIn input
+
+    Scenario: Check dateOut element and set value
+      Given driver to dateOut
+      When insert text to dateOut input
+      Then check the text of the DateOut input
+
+    Scenario: Check aPlaces element and set value
+      Given driver ta aPlaces
+      When insert text to aPlaces input
+      Then check the text of the aPlaces input
+
+    Scenario: Check cPlaces element and set value
+      Given driver to cPlaces
+      When insert text to cPlaces input
+      Then check the text of the cPlaces input
