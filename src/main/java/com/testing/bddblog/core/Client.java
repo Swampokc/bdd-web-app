@@ -1,7 +1,6 @@
 package com.testing.bddblog.core;
 
 import javax.persistence.*;
-import javax.persistence.criteria.CriteriaBuilder;
 
 @Entity
 @Table(name = "client")
@@ -20,6 +19,16 @@ public class Client {
 
     @Column(name = "mail")
     private String mail;
+
+    public Client() {
+
+    }
+
+    public Client(String name, String phone, String mail) {
+        this.name = name;
+        this.phone = phone;
+        this.mail = mail;
+    }
 
     public Integer getId() {
         return id;

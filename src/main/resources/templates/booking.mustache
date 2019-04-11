@@ -1,13 +1,11 @@
 <!DOCTYPE html>
-<html lang="ru" xmlns:ht="127.0.0.1:8080">
 <head>
     <title>{{title}}</title>
-    <script type="text/javascript" src="/static/javascripts/bootstrap.min.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700&amp;subset=cyrillic" rel="stylesheet">
     <link rel="stylesheet" href="/static/stylesheets/bootstrap.min.css"/>
     <link rel="stylesheet" href="/static/stylesheets/main.css"/>
     <meta charset="UTF-8">
 </head>
-<body>
 <header id="header" class="header">
     <div class="container">
         <div class="row">
@@ -33,27 +31,34 @@
         </div>
     </div>
 </header>
+
+<body>
 <section id="booking" class="booking">
-    <form action="/booking" method="POST">
+    <form method="post" action="/booking">
         <div class="container">
             <div class="row row-flex row-flex-wrap">
                 <div class="col-md-10 info_date btn btn-success">
                     <div class="d-flex input">
                         <div class="input__item">
-                            <input type="date" id="dateIn">
+                            <label for="dateIn">Дата заселения</label>
+                            <input type="date" id="dateIn" name="dateIn" class="form-control" value={{dateIn}}>
                         </div>
                         <div class="input__item">
-                            <input type="date" id="dateOut">
+                            <label for="dateOut">Дата выселения</label>
+                            <input type="date" id="dateOut" name="dateOut" class="form-control" value={{dateOut}}>
                         </div>
-                        <select class="input__item" id="aPlaces">
-                            <option> 1</option>
-                            <option> 2</option>
-                        </select>
-                        <select class="input__item" id="cPlaces">
-                            <option> 0</option>
-                            <option> 1</option>
-                            <option> 2</option>
-                        </select>
+                        <div class="input__item">
+                            <label for="aPlaces">Взрослые</label>
+                            <input type="number" class="form-control" id="aPlaces" name="aPlaces" required min=1 max=2 value={{aPlaces}}>
+                        </div>
+                        <div class="input__item">
+                            <label for="cPlaces">Дети</label>
+                            <input type="number" class="form-control" id="cPlaces" name="cPlaces" required min=0 max=2 value={{cPlaces}}>
+                        </div>
+                        <input hidden type="text" name="idRoom" value=-1>
+                        <input hidden type="text" name="name" value=-1>
+                        <input hidden type="text" name="phone" value=-1>
+                        <input hidden type="text" name="mail" value=-1>
                     </div>
                 </div>
                 <div class="col-md-2">
@@ -63,5 +68,74 @@
         </div>
     </form>
 </section>
+
+<section id="rooms" class="rooms">
+    <div class="container">
+        {{#rooms}}
+        <div class="row room_block">
+            <div class="col-md-6">
+                <img src="/static/img/room_{{s_img}}.png" alt="" class="center-block">
+                <div class="container">
+                    <div class="my-5 mx-auto text-center">
+                        <button class="btn btn-dark btn-lg" data-toggle="modal" data-target="#exampleModal{{id}}">Забронировать</button>
+                    </div>
+                </div>
+                <div class="modal fade show" id="exampleModal{{id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">{{name}}</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <form id="contactForm" action="/booking" method="post">
+                                    <div class="form-group">
+                                        <label for="name">Ваше имя:</label>
+                                        <input id="name" class="form-control" name="name" required type="text" placeholder="Иванов Иван Иванович">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="email">Ваш E-mail:</label>
+                                        <input id="email" class="form-control" name="mail" required type="text" placeholder="ivanov@email.com">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="phone">Ваш телефон:</label>
+                                        <input id="phone" class="form-control" name="phone" required type="text" placeholder="+7 (800) 000-00-00">
+                                    </div>
+                                    <div class="form-group form-check">
+                                        <input id="check" class="form-check-input" checked type="checkbox">
+                                        <label class="form-check-label" for="check">Я добровольно отправляю свои данные</label>
+                                    </div>
+                                    <button id="button" class="btn btn-success" type="submit">Отправить</button>
+                                    <input hidden type="text" name="idRoom" value={{id}}>
+                                    <input hidden type="text" name="dateIn" value={{dateIn}}>
+                                    <input hidden type="text" name="dateOut" value={{dateOut}}>
+                                    <input hidden type="text" name="aPlaces" value={{aPlaces}}>
+                                    <input hidden type="text" name="cPlaces" value={{cPlaces}}>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-5 offset-1 text_options">
+                <p class="rooms__block_h">
+                    {{name}}
+                </p>
+                <p class="rooms__block_с">
+                    {{cost}} ₽
+                </p>
+                <p class="rooms__block_h">
+                    {{description}}
+                </p>
+            </div>
+        </div>
+        {{/rooms}}
+    </div>
+</section>
+<script type="text/javascript" src="/static/javascripts/jquery-3.2.1.min.js"></script>
+<script type="text/javascript" src="/static/javascripts/bootstrap.min.js"></script>
+<script type="text/javascript" src="/static/javascripts/jquery.maskedinput.js"></script>
+<script type="text/javascript" src="/static/javascripts/main.js"></script>
 </body>
-</html>

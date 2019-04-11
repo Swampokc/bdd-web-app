@@ -1,6 +1,7 @@
 package com.testing.bddblog.core;
 
 import javax.persistence.*;
+import javax.persistence.criteria.CriteriaBuilder;
 import java.sql.Date;
 
 @Entity
@@ -12,57 +13,68 @@ public class Booking {
     @Column(name = "id")
     private Integer id;
 
-    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @JoinColumn(name="room")
-    private Room room;
+    //@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @Column(name="room")
+    private Integer room;
 
-    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @JoinColumn(name="client")
-    private Client client;
+    //@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @Column(name="client")
+    private Integer client;
 
-    @Column(name = "dateIn")
-    private Date dateIn;
+    @Column(name = "date_in")
+    private String date_in;
 
-    @Column(name ="dateOut")
-    private Date dateOut;
+    @Column(name ="date_out")
+    private String date_out;
 
     public Integer getId() {
         return id;
     }
 
-    public Room getRoom() {
+    public Integer getRoom() {
         return room;
     }
 
-    public Client getClient() {
+    public Integer getClient() {
         return client;
     }
 
-    public Date getDateIn() {
-        return dateIn;
+    public String getDateIn() {
+        return date_in;
     }
 
-    public Date getDateOut() {
-        return dateOut;
+    public String getDateOut() {
+        return date_out;
     }
 
     public void setId(Integer id) {
         this.id = id;
     }
 
-    public void setRoom(Room room) {
+    public void setRoom(Integer room) {
         this.room = room;
     }
 
-    public void setClient(Client client) {
+    public void setClient(Integer client) {
         this.client = client;
     }
 
-    public void setDateIn(Date dateIn) {
-        this.dateIn = dateIn;
+    public void setDateIn(String dateIn) {
+        this.date_in = dateIn;
     }
 
-    public void setDateOut(Date dateOut) {
-        this.dateOut = dateOut;
+    public void setDateOut(String dateOut) {
+        this.date_out = dateOut;
+    }
+
+    public Booking() {
+
+    }
+
+    public Booking(Integer room, Integer client, String dateIn, String dateOut) {
+        this.room = room;
+        this.client = client;
+        this.date_in = dateIn;
+        this.date_out = dateOut;
     }
 }

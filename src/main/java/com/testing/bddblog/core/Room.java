@@ -17,11 +17,11 @@ public class Room {
     @Column (name = "description")
     private String description;
 
-    @Column (name = "adultPlaces")
-    private Integer adultPlaces;
+    @Column (name = "aplaces")
+    private Integer aplaces;
 
-    @Column (name="childPlaces")
-    private Integer childPlaces;
+    @Column (name="cplaces")
+    private Integer cplaces;
 
     @Column (name="count")
     private Integer count;
@@ -44,12 +44,12 @@ public class Room {
         return description;
     }
 
-    public Integer getAdultPlaces() {
-        return adultPlaces;
+    public Integer getAplaces() {
+        return aplaces;
     }
 
-    public Integer getChildPlaces() {
-        return childPlaces;
+    public Integer getCplaces() {
+        return cplaces;
     }
 
     public Integer getCount() {
@@ -77,11 +77,11 @@ public class Room {
     }
 
     public void setAdultPlaces(Integer adultPlaces) {
-        this.adultPlaces = adultPlaces;
+        this.aplaces = adultPlaces;
     }
 
     public void setChildPlaces(Integer childPlaces) {
-        this.childPlaces = childPlaces;
+        this.cplaces = childPlaces;
     }
 
     public void setCount(Integer count) {
@@ -93,6 +93,20 @@ public class Room {
     }
 
     public void setS_img(Integer s_img) {
+        this.s_img = s_img;
+    }
+
+    public Room() {
+
+    }
+
+    public Room(String name, String description, Integer aplaces, Integer cplaces, Integer count, Integer cost, Integer s_img) {
+        this.name = name;
+        this.description = description;
+        this.aplaces = aplaces;
+        this.cplaces = cplaces;
+        this.count = count;
+        this.cost = cost;
         this.s_img = s_img;
     }
 }

@@ -1,6 +1,6 @@
 /* Спецификация */
 body {
-    font-family: 'Montserrat_r', 'serif';
+    font-family: 'Montserrat', sans-serif;
     background: #d9d8d8;
 }
 
@@ -185,10 +185,11 @@ view {
 }
 
 .rooms__block_c {
-    font-family: 'Montserrat_b', 'serif';
+    font-family: 'Montserrat', 'serif';
     font-size: 20px;
     text-align: left;
 }
+
 .text_options {
     color: #000;
 }
